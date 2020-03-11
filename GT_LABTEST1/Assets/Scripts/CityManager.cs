@@ -69,7 +69,6 @@ namespace GRIDCITY
                 for (int i = -6; i <= 6; i++)
                 {
                     Instantiate(buildingPrefab, new Vector3(i, 0.05f, j), Quaternion.identity).GetComponent<DeluxeTowerBlock>().SetProfile(wallProfile);
-
                     if (j == -6 && i == 6 || j == -6 && i == -6 || j == 6 && i == 6 || j == 6 && i == -6) { /*Do nothing*/ }
                     else { Instantiate(buildingPrefab, new Vector3(j, 0.05f, i), Quaternion.identity).GetComponent<DeluxeTowerBlock>().SetProfile(wallProfile); }
                 }
