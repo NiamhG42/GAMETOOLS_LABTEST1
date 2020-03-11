@@ -112,9 +112,9 @@ namespace GRIDCITY
                     {
                         //MODIFY THE CODE BELOW
 
-                        //Build on left
+                        //Build on left of current block
                         random = Random.Range(0, 10);
-                        if ((random < 5) && (!cityManager.CheckSlot(x-1, y, z)))
+                        if ((random < 2.5f) && (!cityManager.CheckSlot(x-1, y, z)))
                         {
                             cityManager.SetSlot(x - 1, y, z, true);
                             child = Instantiate(treePrefab, transform.position + Vector3.left * 1.01f, Quaternion.identity, this.transform);
@@ -122,46 +122,46 @@ namespace GRIDCITY
                             int matNum = myProfile.mainMaterials.Length;
                             Debug.Log(child.GetComponents<TreeTowerBlock>().Length);
                             child.GetComponent<TreeTowerBlock>().Initialize(recursionLevel + 1, myProfile.mainMaterials[Random.Range(0, matNum)], myProfile.altBlocks[Random.Range(0, meshNum)]);
-
+                            
                         };
 
-                        //Build on right
+                        //Build on right of current block
                         random = Random.Range(0, 10);
-                        if ((random < 5) && (!cityManager.CheckSlot(x + 1, y, z)))
+                        if ((random < 2.5f) && (!cityManager.CheckSlot(x + 1, y, z)))
                         {
                             cityManager.SetSlot(x+1, y, z, true);
-                            child = Instantiate(treePrefab, transform.position + Vector3.right * 1.01f, Quaternion.identity, this.transform);
+                            child = Instantiate(treePrefab, transform.position + Vector3.right * 1.01f, Quaternion.identity, this.transform);                     
                             int meshNum = myProfile.altBlocks.Length;
                             int matNum = myProfile.mainMaterials.Length;
                             Debug.Log(child.GetComponents<TreeTowerBlock>().Length);
                             child.GetComponent<TreeTowerBlock>().Initialize(recursionLevel + 1, myProfile.mainMaterials[Random.Range(0, matNum)], myProfile.altBlocks[Random.Range(0, meshNum)]);
-
+                            
                         };
 
-                        //Build on forward
+                        //Build on front of current block
                         random = Random.Range(0, 10);
-                        if ((random < 5) && (!cityManager.CheckSlot(x, y, z+1)))
+                        if ((random < 2.5f) && (!cityManager.CheckSlot(x, y, z+1)))
                         {
                             cityManager.SetSlot(x, y, z + 1, true);
-                            child = Instantiate(treePrefab, transform.position + Vector3.forward * 1.01f, Quaternion.identity, this.transform);
+                            child = Instantiate(treePrefab, transform.position + Vector3.forward * 1.01f, Quaternion.identity, this.transform);                         
                             int meshNum = myProfile.altBlocks.Length;
                             int matNum = myProfile.mainMaterials.Length;
                             Debug.Log(child.GetComponents<TreeTowerBlock>().Length);
                             child.GetComponent<TreeTowerBlock>().Initialize(recursionLevel + 1, myProfile.mainMaterials[Random.Range(0, matNum)], myProfile.altBlocks[Random.Range(0, meshNum)]);
-
+                            
                         };
 
-                        //Build on backward
+                        //Build on back of current block
                         random = Random.Range(0, 10);
-                        if ((random < 5) && (!cityManager.CheckSlot(x, y, z - 1)))
+                        if ((random < 2.5f) && (!cityManager.CheckSlot(x, y, z - 1)))
                         {
                             cityManager.SetSlot(x, y, z - 1, true);
-                            child = Instantiate(treePrefab, transform.position + Vector3.back * 1.01f, Quaternion.identity, this.transform);
+                            child = Instantiate(treePrefab, transform.position + Vector3.back * 1.01f, Quaternion.identity, this.transform);   
                             int meshNum = myProfile.altBlocks.Length;
                             int matNum = myProfile.mainMaterials.Length;
                             Debug.Log(child.GetComponents<TreeTowerBlock>().Length);
                             child.GetComponent<TreeTowerBlock>().Initialize(recursionLevel + 1, myProfile.mainMaterials[Random.Range(0, matNum)], myProfile.altBlocks[Random.Range(0, meshNum)]);
-
+                            
                         };
 
                         //END MODIFY CODE

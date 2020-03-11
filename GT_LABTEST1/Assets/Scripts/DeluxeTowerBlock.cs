@@ -17,6 +17,7 @@ namespace GRIDCITY
         private MeshFilter myMeshFilter;
         private Mesh myMesh;
         private Material myMaterial;
+        private Quaternion roofRotation;
         #endregion
 
         #region Properties	
@@ -83,7 +84,29 @@ namespace GRIDCITY
                 {
                     if (!cityManager.CheckSlot(x, y + 1, z))
                     {
-                        child = Instantiate(basePrefab, transform.position + Vector3.up*1.05f, Quaternion.identity, this.transform);
+                        //Randomise roof rotation
+                        int random = Random.Range(0, 3);
+                        switch (random)
+                        {
+                            case 0:
+                            roofRotation = Quaternion.Euler(0, 0, 0);
+                            break;
+
+                            case 1:
+                            roofRotation = Quaternion.Euler(0, 90, 0);
+                            break;
+
+                            case 2:
+                            roofRotation = Quaternion.Euler(0, 180, 0);
+                            break;
+
+                            case 3:
+                            roofRotation = Quaternion.Euler(0, 270, 0);
+                            break;
+
+                        }
+
+                        child = Instantiate(basePrefab, transform.position + Vector3.up*1.05f, roofRotation, this.transform);
                         int meshNum = myProfile.roofBlocks.Length;
                         int matNum = myProfile.roofMaterials.Length;
                         child.GetComponent<DeluxeTowerBlock>().Initialize(recursionLevel + 1, myProfile.roofMaterials[Random.Range(0, matNum)], myProfile.roofBlocks[Random.Range(0, meshNum)]);
